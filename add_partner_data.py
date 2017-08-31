@@ -70,15 +70,15 @@ def find_parent_candidates(you):
         candidates = [p for p in sub_p if p[2] == m]
 
         if len(candidates) >= 1:
-            print(len(candidates))
+            # print(len(candidates))
             candidates = [c for c in candidates if c[-1]['index'] not in handled_indexes[:-2]]
-            print(len(candidates))
+            # print(len(candidates))
             if len(candidates) == 0:
-                print('terminated at {}'.format(you['index']))
+                # print('terminated at {}'.format(you['index']))
                 continue
 
             set_maxes=[you['index'] - c[-1]['index'] for c in candidates if you['index'] - c[-1]['index'] > 0]
-            print(len(set_maxes))
+            # print(len(set_maxes))
             if len(set_maxes) == 0:
                 continue
             m_l = max(set_maxes)  # furthest away (eldest non-processed)
@@ -87,7 +87,7 @@ def find_parent_candidates(you):
             # now only one candidate lef
             if candidates[0][-1]['index'] not in handled_indexes:
                 handled_indexes.append(candidates[0][-1]['index'])  # append index to index-list
-            print(handled_indexes)
+            # print(handled_indexes)
 
             parents.append(candidates[0][-1])
             last_index = candidates[0][-1]['index']
@@ -107,5 +107,5 @@ for kid in yeared_data[:]:
 
 
 out = pandas.DataFrame(yeared_data)
-out.to_excel('test.xlsx')
+# out.to_excel('test.xlsx')
 
